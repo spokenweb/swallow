@@ -61,7 +61,7 @@ Editing a collection-level metadata:
 
 Browsing Items:
 
-![item browsing](/documentation/UI-collections-edit.png)
+![item browsing](/documentation/UI-items.png)
 
 Limiting by institution, cataloguer, collection.  Sorting. Simple search.
 
