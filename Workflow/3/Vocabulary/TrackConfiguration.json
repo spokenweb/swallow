@@ -1,0 +1,16 @@
+{
+	"values": [
+        {
+            "label":"Half-track"
+        },
+        {
+            "label":"2 track"
+        },
+        {
+            "label":"4 track"
+        },
+        {
+            "label":"24 track"
+        }  
+    ]
+}

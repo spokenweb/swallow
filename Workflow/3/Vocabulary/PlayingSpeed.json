@@ -1,0 +1,28 @@
+{
+	"values": [
+        {
+            "label":"16 2/3 rpm"
+        },
+        {
+            "label":"33 1/3 rpm"
+        },
+        {
+            "label":"45 rpm"
+        },
+        {
+            "label":"78 rpm"
+        },
+        {
+            "label":"3 3/4 ips"
+        },
+        {
+            "label": "7 1/2 ips"
+        },
+        {
+            "label":"15 ips"
+        },
+        {
+            "label":"30 ips"
+        }
+    ]
+}

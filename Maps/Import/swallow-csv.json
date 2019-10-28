@@ -1,0 +1,308 @@
+{
+    "source file type": "CSV",
+    "source schema": "Swallow Spread Sheet CSV",
+    "target schema": "2",
+    "fieldmap":[
+        {
+            "source_field":"Cataloguer email",
+            "target_field":"Cataloguer.email"
+        },
+        {
+            "source_field":"Partner Institution",
+            "target_field":"Collection.partner_institution"
+        },
+        {
+            "source_field":"Contributing Unit",
+            "target_field":"Collection.contributing_unit"
+        },
+        {
+            "source_field":"Source Collection",
+            "target_field":"Collection.source_collection"
+        },
+        {
+            "source_field":"Source Collection Description",
+            "target_field":"Collection.source_collection_description"
+        },
+        {
+            "source_field":"Source Collection ID",
+            "target_field":"Collection.source_collection_ID"
+        },
+        {
+            "source_field":"Persistent URL (if available)",
+            "target_field":""
+        },
+        {
+            "source_field":"Asset Image File Name",
+            "target_field":"Material Description/filename"
+        },
+        {
+            "source_field":"Recording Type",
+            "target_field":"Material Description/recording type"
+        },
+        {
+            "source_field":"AV Type",
+            "target_field":"Material Description/AV type",
+            "source":"Vocabulary/AVType.json"
+        },
+        {
+            "source_field":"Material Designation",
+            "target_field":"Material Description/material designation",
+            "source":"Vocabulary/MaterialDesignation.json"
+        },
+
+        {
+            "source_field":"Physical Composition",
+            "target_field":"Material Description/physical composition",
+            "source":"Vocabulary/PhysicalComposition.json"
+        },
+
+        {
+            "source_field":"Storage Capacity of Artifact",
+            "target_field":"Material Description/storage capacity"
+        },
+
+        {
+            "source_field":"Extent",
+            "target_field":"Material Description/extent",
+            "source":"Vocabulary/Extent.json"
+        },
+
+        {
+            "source_field":"Side",
+            "target_field":""
+        },
+
+        {
+            "source_field":"Playing Speed",
+            "target_field":"Material Description/playing speed",
+            "source":"Vocabulary/PlayingSpeed.json"
+        },
+
+        {
+            "source_field":"Track Configuration",
+            "target_field":"Material Description/track configuration",
+            "source":"Vocabulary/TrackConfiguration.json"
+        },
+
+        {
+            "source_field":"Playback Mode",
+            "target_field":"Material Description/playback mode",
+            "source":"Vocabulary/PLaybackMode.json"
+        },
+
+        {
+            "source_field":"Equalization",
+            "target_field":"Material Description/equalization"
+        },
+
+        {
+            "source_field":"Tape Brand",
+            "target_field":""
+        },
+
+        {
+            "source_field":"Accompanying Material",
+            "target_field":"Material Description/accompanying material"
+        },
+
+        {
+            "source_field":"Other physical description",
+            "target_field":"Material Description/other physical description"
+        },
+
+        {
+            "source_field":"Generations",
+            "target_field":"Material Description/generations"
+        },
+
+        {
+            "source_field":"Sound Quality",
+            "target_field":"Material Description/sound quality",
+            "source":"Vocabulary/SoundQuality.json"
+        },
+
+        {
+            "source_field":"Physical condition",
+            "target_field":"Material Description/physical condition"
+        },
+        {
+            "source_field":"Conservation",
+            "target_field":"Material Description/conservation"
+        },
+        {
+            "source_field":"Other",
+            "target_field":"Material Description/other"
+        },
+
+        {
+            "source_field":"Digitized file name",
+            "target_field":"Digital File Description/filename",
+            "type":"multiple",
+            "id":"1"
+        },
+        {
+            "source_field":"Digital File Path",
+            "target_field":"",
+            "type":"multiple",
+            "id":"1"
+        },
+        {
+            "source_field":"Channels",
+            "target_field":"Digital File Description/channel field",
+            "type":"multiple",
+            "id":"1"
+        },
+
+        {
+            "source_field":"Sample rate",
+            "target_field":"Digital File Description/sample rate",
+            "type":"multiple",
+            "id":"1"
+        },
+
+        {
+            "source_field":"Precision",
+            "target_field":"Digital File Description/precision",
+            "type":"multiple",
+            "id":"1"
+        },
+
+        {
+            "source_field":"Duration",
+            "target_field":"Digital File Description/duration",
+            "type":"multiple",
+            "id":"1"
+        },
+
+        {
+            "source_field":"Size",
+            "target_field":"Digital File Description/size",
+            "type":"multiple",
+            "id":"1"
+        },
+
+
+        {
+            "source_field":"Bit rate",
+            "target_field":"Digital File Description/bitrate",
+            "type":"multiple",
+            "id":"1"
+        },
+
+        {
+            "source_field":"Encoding",
+            "target_field":"Digital File Description/encoding",
+            "type":"multiple",
+            "id":"1"
+        },
+
+        {
+            "source_field":"Title",
+            "target_field":"Item Description/title",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Title Note",
+            "target_field":"Item Description/title note",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Title Source",
+            "target_field":"Item Description/title source",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Language",
+            "target_field":"Item Description/language",
+            "type":"single",
+            "source":"Vocabulary/Language.json"
+        },
+
+        {
+            "source_field":"Production Context",
+            "target_field":"Item Description/production context",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Genre",
+            "target_field":"Item Description/genre",
+            "type":"single",
+            "source":"Vocabulary/Genre.json"
+        },
+
+        {
+            "source_field":"Creator 1",
+            "target_field":"Creators/name",
+            "type":"multiple",
+            "id":"1"
+        },
+        {
+            "source_field":"Creator 1 URL",
+            "target_field":"Creators/url",
+            "type":"multiple",
+            "id":"1"
+        },
+
+        {
+            "source_field":"Creator 1 Role",
+            "target_field":"Creators/role",
+            "type":"multiple",
+            "source":"Vocabulary/ContributorRoles.json",
+            "id":"1"
+        },
+
+        {
+            "source_field":"Contributor 1 name",
+            "target_field":"Contributors/name",
+            "type":"multiple",
+            "id":"1"
+        },
+
+        {
+            "source_field":"Contributor 1 URL",
+            "target_field":"Contributors/url",
+            "type":"multiple",
+            "id":"1"
+        },
+
+
+        {
+            "source_field":"Contributor 1 Role",
+            "target_field":"Contributors/role",
+            "source":"Vocabulary/ContributorRoles.json",
+            "type":"multiple",
+            "id":"1"
+        },
+
+        {
+            "source_field":"Contributor 2 name",
+            "target_field":"Contributors/name",
+            "type":"multiple",
+            "id":"2"
+        },
+
+        {
+            "source_field":"Contributor 2 URL",
+            "target_field":"Contributors/url",
+            "type":"multiple",
+            "id":"2"
+        },
+
+
+        {
+            "source_field":"Contributor 2 Role",
+            "target_field":"Contributors/role",
+            "source":"Vocabulary/ContributorRoles.json",
+            "type":"multiple",
+            "id":"2"
+        }
+
+
+
+
+    ]
+}

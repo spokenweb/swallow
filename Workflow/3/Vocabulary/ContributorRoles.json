@@ -1,0 +1,55 @@
+{
+	"values": [
+        {
+            "label":"Author"
+        },
+        {
+            "label":"Performer"
+        },
+        {
+            "label":"Narrator"
+        },
+        {
+            "label":"Presenter"
+        },
+        {
+            "label":"Interviewer"
+        },
+        {
+            "label":"Producer"
+        },
+        {
+            "label":"Publisher"
+        },
+        {
+            "label":"Distributor"
+        },
+        {
+            "label":"Manufacturer"
+        },
+ 	    {
+            "label":"Recordist"
+        },
+        {
+           "label": "Series organizer"
+        },
+        {
+            "label":"Collector"
+        },
+        {
+            "label": "Archivist"
+        },
+        {
+            "label":"Reader"
+        },
+        {
+            "label":"Speaker"
+        },
+        {
+            "label":"Storyteller"
+        },
+        {
+            "label":"Elder"
+        }
+     ]
+}

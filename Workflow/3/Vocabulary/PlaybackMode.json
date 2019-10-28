@@ -1,0 +1,19 @@
+{
+	"values": [
+        {
+            "label":"Mono"
+        },
+        {
+            "label":"Stereo"
+        },
+        {
+            "label":"Binaural stereo"
+        },
+        {
+            "label":"Quadrophonic"
+        },
+        {
+            "label": "Surround sound"
+        } 
+    ]
+}

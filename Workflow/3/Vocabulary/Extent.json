@@ -1,0 +1,31 @@
+{
+	"values": [
+        {
+            "label":"1/8 inch"
+        },
+        {
+            "label":"1/4 inch"
+        },
+        {
+            "label":"1/2 inch"
+        },
+        {
+            "label":"3/4 inch"
+        },
+        {
+            "label":"1 inch"
+        },
+        {
+            "label":"2 inch "
+        },
+        {
+            "label":"7 inch"
+        },
+        {
+            "label":"10 inch"
+        },
+        {
+            "label":"12 inch"
+        }        
+    ]
+}

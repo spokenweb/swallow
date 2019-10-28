@@ -1,0 +1,26 @@
+{
+	"values": [
+        {
+            "label":"Magnetic Tape"
+        },
+        {
+            "label":"Vinyl"
+        },
+        {
+            "label":"Lacquer"
+        },
+        {
+            "label":"Shellac"
+        },
+        {
+            "label":"Wax"
+        },
+        {
+            "label":"Laser"
+        },
+        {
+            "label":"Magneto-Optical"
+        }
+        
+    ]
+}

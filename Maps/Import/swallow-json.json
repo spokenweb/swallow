@@ -1,0 +1,397 @@
+{
+    "source file type": "JSON",
+    "source schema": "Swallow JSON file",
+    "target schema": "2",
+    "fieldmap":[
+        {
+            "source_field":"cataloguer/email",
+            "target_field":"Cataloguer.email",
+            "type":"single"
+        },
+
+        {
+            "source_field":"collection/source_collection",
+            "target_field":"Collection.source_collection",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Institution and Collection/persistent_URL",
+            "target_field":"Institution and Collection/persistent_URL",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Item Description/title",
+            "target_field":"Item Description/title",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Item Description/title_source",
+            "target_field":"Item Description/title_source",
+            "type":"single"
+        },
+        {
+            "source_field":"Item Description/title_note",
+            "target_field":"Item Description/title_note",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Item Description/language",
+            "target_field":"Item Description/language",
+            "type":"single",
+            "source":"Vocabulary/Language.json"
+        },
+
+        {
+            "source_field":"Item Description/production_context",
+            "target_field":"Item Description/production_context",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Item Description/genre",
+            "target_field":"Item Description/genre",
+            "type":"single",
+            "source":"Vocabulary/Genre.json"
+        },
+
+        {
+            "source_field":"Rights/rights",
+            "target_field":"Rights/rights",
+            "type":"single",
+            "source":"Vocabulary/Rights.json"
+        },
+
+        {
+            "source_field":"Rights/notes",
+            "target_field":"Rights/notes",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Creators/name",
+            "target_field":"Creators/name",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Creators/dates",
+            "target_field":"Creators/dates",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Creators/url",
+            "target_field":"Creators/url",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Creators/role",
+            "target_field":"Creators/role",
+            "type":"multiple",
+            "source":"Vocabulary/ContributorRoles.json"
+        },
+
+        {
+            "source_field":"Creators/notes",
+            "target_field":"Creators/notes",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Contributors/name",
+            "target_field":"Contributors/name",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Contributors/dates",
+            "target_field":"Contributors/dates",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Contributors/url",
+            "target_field":"Contributors/url",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Contributors/role",
+            "target_field":"Contributors/role",
+            "type":"multiple",
+            "source":"Vocabulary/ContributorRoles.json"
+        },
+
+        {
+            "source_field":"Contributors/notes",
+            "target_field":"Contributors/notes",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Material Description/image",
+            "target_field":"Material Description/image",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Material Description/recording_type",
+            "target_field":"Material Description/recording_type",
+            "type":"single",
+            "source":"Vocabulary/RecordingType.json"
+        },
+
+        {
+            "source_field":"Material Description/AV_type",
+            "target_field":"Material Description/AV_type",
+            "type":"single",
+            "source":"Vocabulary/AVType.json"
+        },
+
+        {
+            "source_field":"Material Description/material_designation",
+            "target_field":"Material Description/material_designation",
+            "type":"single",
+            "source":"Vocabulary/MaterialDesignation.json"
+        },
+
+        {
+            "source_field":"Material Description/physical_composition",
+            "target_field":"Material Description/physical_composition",
+            "type":"single",
+            "source":"Vocabulary/PhysicalComposition.json"
+        },
+
+        {
+            "source_field":"Material Description/storage_capacity",
+            "target_field":"Material Description/storage_capacity",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Material Description/extent",
+            "target_field":"Material Description/extent",
+            "type":"single",
+            "source":"Vocabulary/Extent.json"
+        },
+        
+        {
+            "source_field":"Material Description/playing_speed",
+            "target_field":"Material Description/playing_speed",
+            "type":"single",
+            "source":"Vocabulary/PlayingSpeed.json"
+        },
+
+        {
+            "source_field":"Material Description/track_configuration",
+            "target_field":"Material Description/track_configuration",
+            "type":"single",
+            "source":"Vocabulary/TrackConfiguration.json"
+        },
+
+        {
+            "source_field":"Material Description/playback_mode",
+            "target_field":"Material Description/playback_mode",
+            "type":"single",
+            "source":"Vocabulary/PLaybackMode.json"
+        },
+
+        {
+            "source_field":"Material Description/equalization",
+            "target_field":"Material Description/equalization",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Material Description/generations",
+            "target_field":"Material Description/generations",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Material Description/sound_quality",
+            "target_field":"Material Description/sound_quality",
+            "type":"single",
+            "source":"Vocabulary/SoundQuality.json"
+        },
+
+        {
+            "source_field":"Material Description/physical_condition",
+            "target_field":"Material Description/physical_condition",
+            "type":"single"
+        },
+
+
+        {
+            "source_field":"Material Description/Conservation",
+            "target_field":"Material Description/Conservation",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Material Description/other_physical_description",
+            "target_field":"Material Description/other_physical_description",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Material Description/accompanying_material",
+            "target_field":"Material Description/accompanying_material",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Material Description/other",
+            "target_field":"Material Description/other",
+            "type":"single"
+        },
+
+
+        {
+            "source_field":"Digital File Description/filename",
+            "target_field":"Digital File Description/filename",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital File Description/channel_field",
+            "target_field":"Digital File Description/channel_field",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital File Description/sample_rate",
+            "target_field":"Digital File Description/sample_rate",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital File Description/precision",
+            "target_field":"Digital File Description/precision",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital File Description/duration",
+            "target_field":"Digital File Description/duration",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital File Description/size",
+            "target_field":"Digital File Description/size",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital File Description/bitrate",
+            "target_field":"Digital File Description/bitrate",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital File Description/encoding",
+            "target_field":"Digital File Description/encoding",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Dates/date",
+            "target_field":"Dates/date",
+            "type":"multiple"
+      
+        },
+        {
+            "source_field":"Dates/type",
+            "target_field":"Dates/type",
+            "type":"multiple",
+            "source":"Vocabulary/DateType.json"
+      
+        },
+        {
+            "source_field":"Dates/source",
+            "target_field":"Dates/source",
+            "type":"multiple"
+        },
+        {
+            "source_field":"Dates/notes",
+            "target_field":"Dates/notes",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/address",
+            "target_field":"Location/address",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/venue",
+            "target_field":"Location/venue",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/latitude",
+            "target_field":"Location/latitude",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/longitude",
+            "target_field":"Location/longitude",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/url",
+            "target_field":"Location/url",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/notes",
+            "target_field":"Location/notes",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Content/contents",
+            "target_field":"Content/contents",
+            "type":"single"
+        },
+        
+
+        {
+            "source_field":"Notes/type",
+            "target_field":"Notes/type",
+            "type":"multiple",
+            "source":"Vocabulary/NoteType.json"
+        },
+
+        {
+            "source_field":"Notes/note",
+            "target_field":"Notes/note",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Related Works/citation",
+            "target_field":"Related Works/citation",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Related Works/URL",
+            "target_field":"Related Works/URL",
+            "type":"multiple"
+        }
+
+        
+    ]
+}

@@ -1,0 +1,13 @@
+{
+	"values": [
+        {
+            "label":"Excellent"
+        },
+        {
+            "label":"Good"
+        },
+        {
+            "label":"Poor"
+        }
+    ]
+}

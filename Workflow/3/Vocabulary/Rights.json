@@ -1,0 +1,56 @@
+{
+    "values": [
+      {
+        "label": "The Public Domain Mark (PDM)",
+        "uri": "https://creativecommons.org/publicdomain/mark/1.0/"
+      },
+      {
+        "label": "No Copyright non commercial reuse only (NoCNC)",
+        "uri": "http://rightsstatements.org/page/NoC-NC/1.0/?language=en"
+      },
+      {
+        "label": "No Copyright Other Known Legal Restriction (NoC-OKLR)",
+        "uri": "http://rightsstatements.org/page/NoC-OKLR/1.0/?language=en"
+      },
+      {
+        "label": "In Copyright (InC)",
+        "uri": "http://rightsstatements.org/vocab/InC/1.0/"
+      },
+      {
+        "label": "In Copyright Educational Use Permitted (InC-EDU)",
+        "uri": "http://rightsstatements.org/vocab/InC-EDU/1.0/"
+      },
+      {
+        "label": "Copyright Not Evaluated (CNE)",
+        "uri": "http://rightsstatements.org/vocab/CNE/1.0/"
+      },
+      {
+        "label": "The Creative Commons CC0 1.0 Universal Public Domain Dedication (CC0)",
+        "uri": "http://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      {
+        "label": "Creative Commons Attribution (BY)",
+        "uri": "http://creativecommons.org/licenses/by/4.0/"
+      },
+      {
+        "label": "Creative Commons Attribution, ShareAlike (BY-SA)",
+        "uri": "http://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "label": "Creative Commons Attribution, No Derivatives (BY-ND)",
+        "uri": "http://creativecommons.org/licenses/by-nd/4.0/"
+      },
+      {
+        "label": "Creative Commons Attribution, Non-Commercial (BY-NC)",
+        "uri": "http://creativecommons.org/licenses/by-nc/4.0/"
+      },
+      {
+        "label": "Creative Commons Attribution, Non-Commercial, ShareAlike (BY-NC-SA)",
+        "uri": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      {
+        "label": "Creative Commons Attribution, Non-Commercial, No Derivatives (BY-NC-ND)",
+        "uri": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+      }
+    ]
+  }

@@ -1,0 +1,13 @@
+{
+	"values": [
+        {
+            "label":"Publication Date"
+        },
+        {
+            "label":"Production Date"
+        },
+        {
+            "label":"Performance Date"
+        }
+    ]
+}

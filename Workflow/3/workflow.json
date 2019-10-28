@@ -1,0 +1,446 @@
+{
+"schema_version" : "3",
+
+"steps":[
+
+    {
+        "name": "Institution_and_Collection",
+        "type":"single",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#partner-institution-fields",
+        "fields":[
+
+            {
+                "name": "persistent URL",
+                "type":"shorttext"
+            },
+            {
+                "name": "item ID",
+                "type":"shorttext"
+            }
+        ]
+    },
+
+    {
+        "name": "Item_Description",
+        "type":"single",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#title",
+        "fields":[
+            {
+                "name": "title",
+                "type":"longtext"
+            },
+
+            {
+                "name": "title source",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "title note",
+                "type":"longtext"
+            },
+
+            {
+                "name": "language",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/Language.json",
+                "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#language"
+            },
+
+            {
+                "name": "production context",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/ProductionContext.json",
+                "help:":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#production-context"
+            },
+
+            {
+                "name": "genre",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/Genre.json",
+                "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#genre",
+                "multiple":"yes"
+            }
+
+        ]
+    },
+
+    {
+        "name": "Rights",
+        "type":"single",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#rights-fields",
+        "fields":[
+            {
+                "name": "rights",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/Rights.json"
+            },
+
+            {
+                "name": "notes",
+                "type":"longtext"
+            }
+
+        ]
+    },
+
+    {
+        "name": "Creators",
+        "type":"multiple",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#statement-of-responsibility",
+        "fields":[
+            {
+                "name": "name",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "dates",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "url",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "role",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/ContributorRoles.json",
+                "multiple":"yes"
+            },
+
+            {
+                "name": "nation",
+                "type":"lookup",
+                "source":"Widgets/indigenous-ontology/index.html",
+                "multiple":"yes"
+            },
+
+            {
+                "name": "notes",
+                "type":"longtext"
+            }
+
+        ]
+    },
+
+    {
+        "name": "Contributors",
+        "type":"multiple",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#statement-of-responsibility",
+        "fields":[
+            {
+                "name": "name",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "dates",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "url",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "role",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/ContributorRoles.json",
+                "multiple":"yes"
+            },
+
+            {
+                "name": "nation",
+                "type":"lookup",
+                "source":"Widgets/indigenous-ontology/index.html",
+                "multiple":"yes"
+            },
+
+            {
+                "name": "notes",
+                "type":"longtext"
+            }
+
+        ]
+    },
+
+
+    {
+        "name":"Material_Description",
+        "type":"multiple",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#preliminary-material-description-fields",
+        "fields":[
+            {
+                "name":"image",
+                "type":"uploadFile"
+            },
+            
+            {
+                "name":"recording type",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/RecordingType.json"
+            },
+         
+            {
+                "name":"AV type",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/AVType.json"
+            },
+            {
+                "name":"material designation",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/MaterialDesignation.json"
+            },
+            {
+                "name":"physical composition",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/PhysicalComposition.json"
+            },
+            {
+                "name":"storage capacity",
+                "type":"shorttext",
+                "explanation":"Use this Format: Thh:mm:ss"
+            },
+            {
+                "name":"extent",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/Extent.json"
+            },
+            {
+                "name":"playing speed",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/PlayingSpeed.json"
+            },
+            {
+                "name":"track configuration",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/TrackConfiguration.json"
+            },
+            {
+                "name":"playback mode",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/PLaybackMode.json"
+            },
+            {
+                "name":"equalization",
+                "type":"shorttext"
+            },
+
+            {
+                "name":"generations",
+                "type":"shorttext"
+            },
+
+            {
+                "name":"tape brand",
+                "type":"shorttext"
+            },
+
+
+            {
+                "name":"sound quality",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/SoundQuality.json"
+            },
+            
+            {
+                "name":"physical condition",
+                "type":"shorttext"
+            },
+            {
+                "name":"Conservation",
+                "type":"shorttext"
+            },
+
+            {
+                "name":"other physical description",
+                "type":"shorttext"
+            },
+            {
+                "name":"accompanying material",
+                "type":"shorttext"
+            },
+            {
+                "name":"other",
+                "type":"shorttext"
+            }
+        ]
+    },
+
+
+    {
+        "name": "Digital_File_Description",
+        "type":"multiple",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#digital-items-fields",
+        "fields":[
+            {
+                "name": "filename",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "channel field",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "sample rate",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "precision",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "duration",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "size",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "bitrate",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "encoding",
+                "type":"shorttext"
+            }
+
+        ]
+    },
+
+    {
+        "name": "Dates",
+        "type":"multiple",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#date",
+        "fields":[
+            {
+                "name": "date",
+                "type":"shorttext"
+            },
+ 
+            {
+                "name": "type",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/DateType.json"
+            },
+
+            {
+                "name": "source",
+                "type":"shorttext"
+            },
+
+
+            {
+                "name": "notes",
+                "type":"longtext"
+            }
+
+        ]
+    },
+
+    
+    {
+        "name": "Location",
+        "type":"multiple",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#location",
+        "fields":[
+            {
+                "name": "address",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "venue",
+                "type":"shorttext"
+            },
+ 
+            {
+                "name": "latitude",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "longitude",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "url",
+                "type":"shorttext"
+            },
+
+            {
+                "name": "notes",
+                "type":"longtext"
+            }
+
+        ]
+    },
+
+
+    {
+        "name": "Content",
+        "type":"single",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#contents",
+        "fields":[
+            {
+                "name": "contents",
+                "type":"longtext"
+            },
+            {
+                "name": "notes",
+                "type":"longtext"
+            }
+        ]
+    },
+
+    {
+        "name": "Notes",
+        "type":"multiple",
+        "fields":[
+            {
+                "name": "type",
+                "type":"dropdown|vocabulary",
+                "source":"Vocabulary/NoteType.json"
+            },
+
+            {
+                "name": "note",
+                "type":"longtext"
+            }
+
+        ]
+    },
+    {
+        "name": "Related_Works",
+        "type":"multiple",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#related-works",
+        "fields":[
+            {
+                "name": "citation",
+                "type":"longtext"
+            },
+
+            {
+                "name": "URL",
+                "type":"shorttext"
+            }
+
+        ]
+    } 
+
+]
+
+}

@@ -1,0 +1,65 @@
+{
+	"values": [
+        {
+            "label":"Performance: Improvised speech"
+        },
+        {
+            "label":"Performance: Sound Poetry"
+        },
+        {
+            "label":"Performance: Spoken Word Poetry"
+        },
+        {
+            "label":"Reading: Drama"
+        },
+        {
+            "label":"Reading: Fiction"
+        },
+        {
+            "label":"Reading: Poetry"
+        },
+        {
+            "label":"Interview"
+        },
+        {
+            "label": "Oral History"
+        },
+        {
+            "label":"Oral Storytelling"
+        },
+        {
+            "label": "Conversation"
+        },
+        {
+            "label":"Letter"
+        },
+        {
+            "label":"Ambient sounds"
+        },
+        {
+            "label":"Music"
+        },
+        {
+            "label":"Soundscapes"
+        },
+        {
+            "label":"Speeches: Commemorative works"
+        },
+        {
+            "label":"Speeches: Panels"
+        },
+        {
+            "label":"Speeches: Question-and-answer period"
+        },
+        {
+            "label":"Speeches: Talks"
+        },
+        {
+            "label":"Text-sound compositions"
+        },
+        {
+            "label":"Performance: Sound Poetry, Music"
+        }
+        
+    ]
+}
