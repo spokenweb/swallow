@@ -19,6 +19,15 @@ Swallow was developed on PHP 7.2.10 on Ubuntu 18.04
 Initialize the MySQL database structure
 
 ## Software Architecture
+(documentation/swallow_current_state.png)
+
+The most distinctive characteristic of the Swallow architecture is the complete decoupling of the metadata schema from the database and the system. This is possible by storing the metadata information in no-SQL format and implementing an engine to generate the user interface from a configuration file. As well, in configuration files, there are maps that allow Swallow to batch ingest and export data from and to different systems. These configuration files are defined as JSON objects.
+
+In the figure above we see the overall system diagram for Swallow. White boxes indicate the core modules of Swallow: 
+* Cataloguers Management
+* Collections Management
+* Items management.
+* Import and export.
 
 ## User Interface
 
