@@ -61,7 +61,7 @@ Editing a collection-level metadata:
 
 ### Items
 
-Browsing Items:
+Browsing Items encoded in SpokenWeb Schema:
 
 ![item browsing](/documentation/UI-items.png)
 
