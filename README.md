@@ -33,6 +33,8 @@ In the figure above we see the overall system diagram for Swallow. White boxes i
 
 ### User Profile
 
+Editing a user profile:
+
 ![user profile](/documentation/UI-profile.png)
 
 ### Dashboard
@@ -41,9 +43,13 @@ In the figure above we see the overall system diagram for Swallow. White boxes i
 
 ### Cataloguers
 
+Browsing cataloguers (for admins):
+
 ![cataloguer browse screen for admins](/documentation/UI-cataloguers.png)
 
 ### Collections
+
+Browsing collections:
 
 ![collection browse screen](/documentation/UI-collections.png)
 
