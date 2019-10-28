@@ -67,7 +67,11 @@ Limiting by institution, cataloguer, collection.  Sorting. Simple search.
 
 #### Institution & Collection
 
+![item institution/collection](/documentation/UI-items-institution-collection.png)
+
 #### Item Description
+
+![item description](/documentation/UI-items-description.png)
 
 #### Rights
 
