@@ -31,7 +31,7 @@ In the figure above we see the overall system diagram for Swallow. White boxes i
 
 ## User Interface
 
-The most distinctive characteristic of the Swallow architecture is the complete decoupling of the metadata schema from the database and the system. This is possible by storing the metadata information in no-SQL format and implementing an engine to generate the user interface from a configuration file. 
+The most distinctive characteristic of the Swallow architecture is the complete decoupling of the metadata schema from the database and the system. This is possible by storing the metadata information in no-SQL format and implementing an engine to generate the user interface from a ![configuration files](Workflow/3) 
 
 ### User/Cataloguer Profile
 
