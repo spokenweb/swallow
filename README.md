@@ -2,7 +2,9 @@
 
 This is the source code and documentation repository for the Swallow Metadata Management System.
 
-## SpokenWeb Metadata Schema
+## SpokenWeb Metadata Scheme
+
+SpokenWeb Metadata Scheme and Cataloguing Process is described here: https://spokenweb-metadata-scheme.readthedocs.io/en/latest/
 
 ## Installation of Swallow
 
