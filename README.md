@@ -77,6 +77,10 @@ Limiting by institution, cataloguer, collection.  Sorting. Simple search.
 
 #### Rights
 
+The Swallow schema specification functionality currently allows for the inclusion of URIs alongside metadata values that are a part of the SpokenWeb schema, such as links to CreativeCommons and Rights Statements.  
+
+![item description](/documentation/UI-item-rights.png)
+
 #### Creators/Contributors
 
 #### Material Description
