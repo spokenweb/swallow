@@ -1,7 +1,16 @@
 Installation Instructions:
 ---------------------------
 
-Run the following SQL to create the database:
+Run the following SQL to create the database.
+This creates the initial structure.
+Please note that this also creates an admin user, which you should re-intialize with a new password using the interface.
+
+You will also have to rename this file: 
+https://github.com/spokenweb/swallow/blob/master/Model/db-dist.config.php
+to db.config.php
+and configure the credentials for DB access in that file.
+
+
 
 ```
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -36,7 +45,7 @@ CREATE TABLE `cataloguer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `cataloguer` (`id`, `name`, `lastname`, `email`, `pwd`, `institution`, `role`) VALUES
-(1, 'admin', 'admin', 'swallow-admin@swallow.ca', '$2y$10$/iyfDqqrpBiv5ht4diJOs.GwYQqL8hxFPS365WHsh7XVb7yMevZwu', '', 1);
+(1, 'admin', 'admin', '--INSERT--YOUR--ADMIN--EMAIL', '', '', 1);
 -- --------------------------------------------------------
 
 --
