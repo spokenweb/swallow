@@ -16,7 +16,7 @@ Installation Requirements:
 
 Swallow was developed on PHP 7.2.10 on Ubuntu 18.04
 
-Initialize the MySQL database structure
+* [Initialize the MySQL database structure](documentation/INITIALIZE-DB.md)
 
 ## Software Architecture
 ![Swallow architecture](documentation/swallow_current_state.png)
