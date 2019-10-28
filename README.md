@@ -66,3 +66,8 @@ In the figure above we see the overall system diagram for Swallow. White boxes i
 ### Import
 
 ### Export
+
+
+# License
+
+[BSD 3-Clause License](LICENSE). 
