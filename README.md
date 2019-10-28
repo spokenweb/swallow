@@ -8,6 +8,16 @@ SpokenWeb Metadata Scheme and Cataloguing Process is described here: https://spo
 
 ## Installation of Swallow
 
+Installation Requirements:
+--------------------------
+
+* PHP 
+* MySQL MySQL 5.7.8 (or higher)
+
+Swallow was developed on PHP 7.2.10 on Ubuntu 18.04
+
+Initialize the MySQL database structure
+
 ## Software Architecture
 
 ## User Interface
