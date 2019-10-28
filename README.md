@@ -41,9 +41,15 @@ In the figure above we see the overall system diagram for Swallow. White boxes i
 
 ### Cataloguers
 
-![dashboard](/documentation/UI-cataloguers.png)
+![cataloguer browse screen for admins](/documentation/UI-cataloguers.png)
 
 ### Collections
+
+![collection browse screen](/documentation/UI-collections.png)
+
+Editing a collection-level metadata:
+
+![collection editing metadata](/documentation/UI-collections-edit.png)
 
 ### Items
 
