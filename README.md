@@ -35,6 +35,8 @@ In the figure above we see the overall system diagram for Swallow. White boxes i
 
 ### Dashboard
 
+![dashboard](/documentation/UI-dashboard.png)
+
 ### Cataloguers
 
 ### Collections
