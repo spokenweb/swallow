@@ -31,9 +31,11 @@ In the figure above we see the overall system diagram for Swallow. White boxes i
 
 ## User Interface
 
-### User Profile
+The most distinctive characteristic of the Swallow architecture is the complete decoupling of the metadata schema from the database and the system. This is possible by storing the metadata information in no-SQL format and implementing an engine to generate the user interface from a configuration file. 
 
-Editing a user profile:
+### User/Cataloguer Profile
+
+Editing a user profile, these are simple fields for username and password:
 
 ![user profile](/documentation/UI-profile.png)
 
