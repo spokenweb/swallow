@@ -33,6 +33,8 @@ In the figure above we see the overall system diagram for Swallow. White boxes i
 
 ### User Profile
 
+![user profile](/documentation/UI-profile.png)
+
 ### Dashboard
 
 ![dashboard](/documentation/UI-dashboard.png)
