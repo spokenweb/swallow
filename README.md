@@ -89,7 +89,7 @@ The spokenweb schema includes URIs for authority records (VIAF in example below)
 
 ![creators/contributors](/documentation/UI-creators.png)
 
-Idigeneous ontology nation names can also be added to describe creators/contributors:
+Idigeneous ontology nation names can also be added to describe creators/contributors.  The widget searches to autocomplete for options from a controlled vocabulary file.
 
 ![indigenous nations ontology add-on widget](/documentation/UI-indigenous_nations.png)
 
@@ -127,6 +127,9 @@ Importing UI allows user to select an import mapping.  A CSV mapping and the two
 
 ### Export
 
+User can filter (institution, collection, cataloguer) or do a simple search to find a set of items to export.  Currently, only Swallow JSON format is available.
+
+![export](/documentation/UI-export.png)
 
 # License
 
