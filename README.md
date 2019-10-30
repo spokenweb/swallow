@@ -111,6 +111,10 @@ The spokenweb schema includes many specialized fields for the material descripti
 
 #### Related Works
 
+The SpokenWeb schema includes a mulitple field for related citations and URIs
+
+![related works](/documentation/UI-related_works.png)
+
 ### Import
 
 ### Export
