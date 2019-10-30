@@ -93,6 +93,10 @@ Idigeneous ontology nation names can also be added to describe creators/contribu
 
 #### Material Description
 
+The spokenweb schema includes many specialized fields for the material description, for exmaple:
+
+![material description](/documentation/UI-material_description.png)
+
 #### Digital File Description
 
 #### Dates
