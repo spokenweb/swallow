@@ -121,6 +121,10 @@ Other fields in the SpokenWeb schema include Digital File Description, Dates and
 
 ### Import
 
+Importing UI allows user to select an import mapping.  A CSV mapping and the two mapping for the SpokenWeb schema versions 2 and 3 are included.
+
+![import](/documentation/UI-import.png)
+
 ### Export
 
 
