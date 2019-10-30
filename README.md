@@ -79,9 +79,17 @@ Limiting by institution, cataloguer, collection.  Sorting. Simple search.
 
 The Swallow schema specification functionality currently allows for the inclusion of [URIs alongside metadata values](Workflow/3/Vocabulary/Rights.json) that are a part of the SpokenWeb schema, such as links to CreativeCommons and Rights Statements.  
 
-![item description](/documentation/UI-item-rights.png)
+![rights](/documentation/UI-item-rights.png)
 
 #### Creators/Contributors
+
+The spokenweb schema includes URIs for authority records (VIAF in example below), and multiple roles:
+
+![creators/contributors](/documentation/UI-creators.png)
+
+Idigeneous ontology nation names can also be added to describe creators/contributors:
+
+![indigenous nations ontology add-on widget](/documentation/UI-indigenous_nations.png)
 
 #### Material Description
 
