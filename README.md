@@ -107,6 +107,10 @@ The spokenweb schema includes many specialized fields for the material descripti
 
 #### Content
 
+The SpokenWeb schema supports XML encoded metadata.  This is required for storing Avalon XML formatted structural metadata (https://wiki.dlib.indiana.edu/display/VarVideo/Adding+Structure+to+Files+Using+the+Graphical+XML+Editor)
+
+![content field](/documentation/UI-content.png)
+
 #### Notes
 
 #### Related Works
