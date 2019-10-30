@@ -103,6 +103,8 @@ The spokenweb schema includes many specialized fields for the material descripti
 
 #### Location
 
+![location](/documentation/UI-location.png)
+
 #### Content
 
 #### Notes
