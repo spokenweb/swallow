@@ -61,7 +61,7 @@ Editing a collection-level metadata:
 
 ### Items
 
-Swallow can be configured to support multiple schema.  The following are exmaples of cataloguing screens generated based on the SpokenWeb Schema that it currently includes by default ([configuration files](Workflow/3)). 
+Swallow can be configured to support multiple schema.  The following are examples of cataloguing screens generated based on the SpokenWeb Schema that it currently includes by default ([configuration files](Workflow/3)). 
 
 Browsing Items encoded in SpokenWeb Schema:
 
