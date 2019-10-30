@@ -61,7 +61,7 @@ Editing a collection-level metadata:
 
 ### Items
 
-Browsing Items encoded in SpokenWeb Schema:
+Swallow can be configured to support multiple schema.  The following are exmaples of cataloguing screens for steps and fields gennerated based on the SpokenWeb Schema that it currently includes by default. Browsing Items encoded in SpokenWeb Schema:
 
 ![item browsing](/documentation/UI-items.png)
 
@@ -97,10 +97,6 @@ The spokenweb schema includes many specialized fields for the material descripti
 
 ![material description](/documentation/UI-material_description.png)
 
-#### Digital File Description
-
-#### Dates
-
 #### Location
 
 ![location](/documentation/UI-location.png)
@@ -111,13 +107,15 @@ The SpokenWeb schema supports XML encoded metadata.  This is required for storin
 
 ![content field](/documentation/UI-content.png)
 
-#### Notes
-
 #### Related Works
 
 The SpokenWeb schema includes a mulitple field for related citations and URIs
 
 ![related works](/documentation/UI-related_works.png)
+
+#### Other fields
+
+Other fields in the SpokenWeb schema include Digital File Description, Dates and Notes.
 
 ### Import
 
