@@ -28,8 +28,8 @@ This is the source code and documentation repository for the Swallow Metadata Ma
     * [Content](#content)
     * [Related Works](#related-works)
     * [Other fields](#other-fields)
-    * [Import](#import)
-    * [Export](#export)
+   * [Import](#import)
+   * [Export](#export)
     
 ***
 
