@@ -2,21 +2,53 @@
 
 This is the source code and documentation repository for the Swallow Metadata Management System.
 
+# License
+
+[BSD 3-Clause License](LICENSE). 
+
+***
+
+## TABLE OF CONTENTS
+* [SpokenWeb Metadata Scheme](#spokenweb-metadata-scheme)
+* [Installation of Swallow](#installation-of-swallow)
+  * [Installation Requirements](#installation-requirements)
+* [Software Architecture](#software-architecture)
+* [User Interface](#user-interface)
+  * [Cataloguer Profile](#cataloguer-profile)
+  * [Dashboard](#dashboard)
+  * [Cataloguers](#cataloguers)
+  * [Collections](#collections)
+  * [Items](#dashboard)
+    * [Institution and Collection](#institution-and-collection)
+    * [Item Description](#item-description)
+    * [Rights](#rights)
+    * [Creators and Contributors](#creators-and-contributors)
+    * [Material Description](#material-description)
+    * [Location](#location)
+    * [Content](#content)
+    * [Related Works](#related-works)
+    * [Other fields](#other-fields)
+    * [Import](#import)
+    * [Export](#export)
+    
+***
+
 ## SpokenWeb Metadata Scheme
 
 SpokenWeb Metadata Scheme and Cataloguing Process is described here: https://spokenweb-metadata-scheme.readthedocs.io/en/latest/
 
 ## Installation of Swallow
 
-Installation Requirements:
---------------------------
+Swallow was developed on PHP 7.2.10 on Ubuntu 18.04
+
+* [Initialize the MySQL database structure](documentation/INITIALIZE-DB.md)
+
+### Installation Requirements:
 
 * PHP 
 * MySQL MySQL 5.7.8 (or higher)
 
-Swallow was developed on PHP 7.2.10 on Ubuntu 18.04
-
-* [Initialize the MySQL database structure](documentation/INITIALIZE-DB.md)
+***
 
 ## Software Architecture
 ![Swallow architecture](documentation/swallow_current_state.png)
@@ -29,11 +61,13 @@ In the figure above we see the overall system diagram for Swallow. White boxes i
 * Items management.
 * Import and export.
 
+***
+
 ## User Interface
 
 The most distinctive characteristic of the Swallow architecture is the complete decoupling of the metadata schema from the database and the system. This is possible by storing the metadata information in no-SQL format and implementing an engine to generate the user interface from a [configuration files](Workflow/3).
 
-### User/Cataloguer Profile
+### Cataloguer Profile
 
 Editing a user profile, these are simple fields for username and password:
 
@@ -69,7 +103,7 @@ Browsing Items encoded in SpokenWeb Schema:
 
 Limiting by institution, cataloguer, collection.  Sorting. Simple search.
 
-#### Institution & Collection
+#### Institution and Collection
 
 ![item institution/collection](/documentation/UI-items-institution-collection.png)
 
@@ -83,7 +117,7 @@ The Swallow schema specification functionality currently allows for the inclusio
 
 ![rights](/documentation/UI-item-rights.png)
 
-#### Creators/Contributors
+#### Creators and Contributors
 
 The spokenweb schema includes URIs for authority records (VIAF in example below), and multiple roles:
 
@@ -131,6 +165,4 @@ User can filter (institution, collection, cataloguer) or do a simple search to f
 
 ![export](/documentation/UI-export.png)
 
-# License
 
-[BSD 3-Clause License](LICENSE). 
