@@ -19,9 +19,12 @@ isLogged($conn);
             <label for="map" class="col-sm-2">Mapping Function</label>
             <select name='map' class='form-control'>
                 <option value=''>Select an option</option>
-                <option value='../Maps/Import/swallow-csv.json'>Swallow CSV</option>
-                <option value='../Maps/Import/swallow-json.json'>Swallow JSON V2 </option>
-                <option value='../Maps/Import/swallow-json-v3.json'>Swallow JSON V3</option>
+                <option value='../Maps/Import/swallow-csv.json'>Swallow CSV to V2</option>
+                <option value='../Maps/Import/swallow-csv-v3.json'>Swallow CSV to V3</option>
+                <option value='../Maps/Import/arcmtl-csv-v3.json'>ARCMTL CSV to V3</option>
+                <option value='../Maps/Import/swallow-json.json'>Swallow JSON V2 to v2 </option>
+                <option value='../Maps/Import/swallow-json-v2v3.json'>Swallow JSON V2 to v3 </option>
+                <option value='../Maps/Import/swallow-json-v3.json'>Swallow JSON V3 to V3</option>
             </select>
         </div>
 
@@ -33,6 +36,7 @@ isLogged($conn);
         <div class="form-group">
             <span class="col-sm-2"></span>
                 <button type="submit" class="btn btn-primary">Import</button>
+                <div id="batchImportStatus"></div>
         </div>
     </form>
 </div>

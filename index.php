@@ -33,7 +33,7 @@
       <br />
       <img src="images/logo-image.png">
       <h5>SpokenWeb Audio Metadata Ingest System</h5>
-      <small> Version 1.1 </small>
+      <small> Version 1.2 </small>
     </div>
 
     <!-- Login Form -->

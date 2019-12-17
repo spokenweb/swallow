@@ -38,7 +38,7 @@ $objCataloguer->select($_SESSION['swallow_uid']);
 <nav class="navbar top-nav-bar">
 
 <a href="/main.php"><img src="images/logo-menu-image.png"></a>
-  <span class='top-nav-bar-version'>Version 1.1 </span>
+  <span class='top-nav-bar-version'>Version 1.2 </span>
   <div class="top-nav-bar-profile">
        
       <?php echo($objCataloguer->name." ".$objCataloguer->lastname) ?>

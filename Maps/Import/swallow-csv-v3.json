@@ -1,0 +1,421 @@
+{
+    "source file type": "CSV",
+    "source schema": "Swallow Spread Sheet CSV",
+    "target schema": "3",
+  
+    "fieldmap":[
+        {
+            "source_field":"cataloguer_last_name_first_name",
+            "target_field":"Cataloguer.email",
+            "type":"single"
+        },
+
+        {
+            "source_field":"source_collection_code",
+            "target_field":"Collection.source_collection",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Institution_and_Collection/persistent_URL",
+            "target_field":"Institution_and_Collection/persistent_URL",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Item_Description/title",
+            "target_field":"Item_Description/title",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Item_Description/title_source",
+            "target_field":"Item_Description/title_source",
+            "type":"single"
+        },
+        {
+            "source_field":"Item_Description/title_note",
+            "target_field":"Item_Description/title_note",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Item_Description/language",
+            "target_field":"Item_Description/language",
+            "type":"single",
+            "source":"Vocabulary/Language.json"
+        },
+
+        {
+            "source_field":"Item_Description/production_context",
+            "target_field":"Item_Description/production_context",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Item_Description/genre",
+            "target_field":"Item_Description/genre",
+            "type":"single",
+            "source":"Vocabulary/Genre.json",
+            "multiple":"yes"
+        },
+
+        {
+            "source_field":"Rights/rights",
+            "target_field":"Rights/rights",
+            "type":"single",
+            "source":"Vocabulary/Rights.json"
+        },
+
+        {
+            "source_field":"Rights/notes",
+            "target_field":"Rights/notes",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Creators/name",
+            "target_field":"Creators/name",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Creators/dates",
+            "target_field":"Creators/dates",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Creators/url",
+            "target_field":"Creators/url",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Creators/nation",
+            "target_field":"Creators/nation",
+            "type":"multiple",
+            "multiple":"yes"
+        },
+
+        {
+            "source_field":"Creators/role",
+            "target_field":"Creators/role",
+            "type":"multiple",
+            "source":"Vocabulary/ContributorRoles.json",
+            "multiple":"yes"
+        },
+
+        {
+            "source_field":"Creators/notes",
+            "target_field":"Creators/notes",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Contributors/name",
+            "target_field":"Contributors/name",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Contributors/dates",
+            "target_field":"Contributors/dates",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Contributors/url",
+            "target_field":"Contributors/url",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Contributors/role",
+            "target_field":"Contributors/role",
+            "type":"multiple",
+            "source":"Vocabulary/ContributorRoles.json",
+            "multiple":"yes"
+        },
+
+        {
+            "source_field":"Contributors/nation",
+            "target_field":"Contributors/nation",
+            "type":"multiple",
+            "multiple":"yes"
+        },
+
+        {
+            "source_field":"Contributors/notes",
+            "target_field":"Contributors/notes",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Material_Description/image",
+            "target_field":"Material_Description/image",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Material_Description/recording_type",
+            "target_field":"Material_Description/recording_type",
+            "type":"multiple",
+            "source":"Vocabulary/RecordingType.json"
+        },
+
+        {
+            "source_field":"Material_Description/AV_type",
+            "target_field":"Material_Description/AV_type",
+            "type":"multiple",
+            "source":"Vocabulary/AVType.json"
+        },
+
+        {
+            "source_field":"Material_Description/material_designation",
+            "target_field":"Material_Description/material_designation",
+            "type":"multiple",
+            "source":"Vocabulary/MaterialDesignation.json"
+        },
+
+        {
+            "source_field":"Material_Description/physical_composition",
+            "target_field":"Material_Description/physical_composition",
+            "type":"multiple",
+            "source":"Vocabulary/PhysicalComposition.json"
+        },
+
+        {
+            "source_field":"Material_Description/storage_capacity",
+            "target_field":"Material_Description/storage_capacity",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Material_Description/extent",
+            "target_field":"Material_Description/extent",
+            "type":"multiple",
+            "source":"Vocabulary/Extent.json"
+        },
+        
+        {
+            "source_field":"Material_Description/playing_speed",
+            "target_field":"Material_Description/playing_speed",
+            "type":"multiple",
+            "source":"Vocabulary/PlayingSpeed.json"
+        },
+
+        {
+            "source_field":"Material_Description/track_configuration",
+            "target_field":"Material_Description/track_configuration",
+            "type":"multiple",
+            "source":"Vocabulary/TrackConfiguration.json"
+        },
+
+        {
+            "source_field":"Material_Description/playback_mode",
+            "target_field":"Material_Description/playback_mode",
+            "type":"multiple",
+            "source":"Vocabulary/PLaybackMode.json"
+        },
+
+        {
+            "source_field":"Material_Description/equalization",
+            "target_field":"Material_Description/equalization",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Material_Description/generations",
+            "target_field":"Material_Description/generations",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Material_Description/sound_quality",
+            "target_field":"Material_Description/sound_quality",
+            "type":"multiple",
+            "source":"Vocabulary/SoundQuality.json"
+        },
+
+        {
+            "source_field":"Material_Description/physical_condition",
+            "target_field":"Material_Description/physical_condition",
+            "type":"multiple"
+        },
+
+
+        {
+            "source_field":"Material_Description/Conservation",
+            "target_field":"Material_Description/Conservation",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Material_Description/other_physical_description",
+            "target_field":"Material_Description/other_physical_description",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Material_Description/accompanying_material",
+            "target_field":"Material_Description/accompanying_material",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Material Description/other",
+            "target_field":"Material_Description/other",
+            "type":"multiple"
+        },
+
+
+        {
+            "source_field":"Digital_File_Description/filename",
+            "target_field":"Digital_File_Description/filename",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital_File_Description/channel_field",
+            "target_field":"Digital_File_Description/channel_field",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital_File_Description/sample_rate",
+            "target_field":"Digital_File_Description/sample_rate",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital_File_Description/precision",
+            "target_field":"Digital_File_Description/precision",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital_File_Description/duration",
+            "target_field":"Digital_File_Description/duration",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital_File_Description/size",
+            "target_field":"Digital_File_Description/size",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital_File_Description/bitrate",
+            "target_field":"Digital_File_Description/bitrate",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Digital_File_Description/encoding",
+            "target_field":"Digital_File_Description/encoding",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Dates/date",
+            "target_field":"Dates/date",
+            "type":"multiple"
+      
+        },
+        {
+            "source_field":"Dates/type",
+            "target_field":"Dates/type",
+            "type":"multiple",
+            "source":"Vocabulary/DateType.json"
+      
+        },
+        {
+            "source_field":"Dates/source",
+            "target_field":"Dates/source",
+            "type":"multiple"
+        },
+        {
+            "source_field":"Dates/notes",
+            "target_field":"Dates/notes",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/address",
+            "target_field":"Location/address",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/venue",
+            "target_field":"Location/venue",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/latitude",
+            "target_field":"Location/latitude",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/longitude",
+            "target_field":"Location/longitude",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/url",
+            "target_field":"Location/url",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Location/notes",
+            "target_field":"Location/notes",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Content/contents",
+            "target_field":"Content/contents",
+            "type":"single"
+        },
+
+        {
+            "source_field":"Content/notes",
+            "target_field":"Content/notes",
+            "type":"single"
+        },
+        
+
+        {
+            "source_field":"Notes/type",
+            "target_field":"Notes/type",
+            "type":"multiple",
+            "source":"Vocabulary/NoteType.json"
+        },
+
+        {
+            "source_field":"Notes/note",
+            "target_field":"Notes/note",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Related_Works/citation",
+            "target_field":"Related_Works/citation",
+            "type":"multiple"
+        },
+
+        {
+            "source_field":"Related_Works/URL",
+            "target_field":"Related_Works/URL",
+            "type":"multiple"
+        }
+
+        
+    ]
+}

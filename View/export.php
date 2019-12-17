@@ -19,6 +19,7 @@ $objItem = new Item($conn);
 $institution = '-1';
 $cataloguer = '-1';
 $collection = '-1';
+$schema = '-1';
 
 if(isset($_GET['page'])){
   $page = $_GET['page'];
@@ -36,11 +37,17 @@ if(isset($_GET['collection'])){
   $collection = $_GET['collection'];
 }
 
+if(isset($_GET['schema'])){
+  $schema = $_GET['schema'];
+}
+
 if(isset($_GET['metadataquery'])){
   $metadataquery = base64_decode($_GET['metadataquery']);  
 }
 
-$objItem->metadataQuery($metadataquery,$institution,$cataloguer,$collection,$page);
+//var_dump($schema);
+
+$objItem->metadataQuery($metadataquery,$institution,$cataloguer,$collection,$page,'',$schema);
 
 
 $objCollection = new Collection($conn);
@@ -108,6 +115,20 @@ function fillCollection($institution,$objCollection,$collection){
   }   
 }
 
+
+function fillSchema($schema){
+  // this should be put in config file
+  $schema_list = array("2","3");
+  
+  foreach($schema_list as $item){
+    $selected = '';
+    if($item == $schema){
+      $selected = 'selected = selected';
+    }
+    echo("<option value=\"$item\" $selected>V$item</option>");
+  }
+}
+
 ?>
 
 
@@ -127,7 +148,7 @@ function fillCollection($institution,$objCollection,$collection){
                 <span class="glyphicon glyphicon-filter" style=" font-size: 25px; margin-top:10px"></span>
               </td>
               <td>
-                <select id="f_institution" class="form-control" style="width:250px" onchange="filter(1)">
+                <select id="f_institution" class="form-control" style="max-width:250px" onchange="filter(1)">
                   <option value='-1' >INSTITUTION</option> 
                   <?php
                     fillInstitution($institution);
@@ -136,7 +157,7 @@ function fillCollection($institution,$objCollection,$collection){
               </td> 
 
               <td>
-                <select id="f_cataloguer" class="form-control" style="width:250px" onchange="filter(1)">
+                <select id="f_cataloguer" class="form-control" style="max-width:250px" onchange="filter(1)">
                   <option value='-1' >CATALOGUER</option> 
                   <?php
                     fillCataloguer($institution,$objCataloguer,$cataloguer);
@@ -145,13 +166,21 @@ function fillCollection($institution,$objCollection,$collection){
               </td>
 
               <td>
-                <select id="f_collection" class="form-control" style="width:250px" onchange="filter(1)">
+                <select id="f_collection" class="form-control" style="max-width:250px" onchange="filter(1)">
                   <option value='-1' >COLLECTION</option> 
                   <?php
                     fillCollection($institution,$objCollection,$collection);
                   ?> 
                 </select>
               </td>
+
+              <td>
+                <select id="f_schema" class="form-control" style="max-width:250px" onchange="filter(1)">
+                  <option value='-1' >SCHEMA</option> 
+                  <?php  fillSchema($schema) ?>
+                </select>
+              </td>
+
             </tr>
             </thead>
           </table>

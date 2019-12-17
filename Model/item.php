@@ -261,7 +261,7 @@ class Item extends db{
 
 
 
-    function metadataQuery($in_query,$institution = -1,$cataloguer = -1,$collection = -1,$page=-1,$orderby=''){
+    function metadataQuery($in_query,$institution = -1,$cataloguer = -1,$collection = -1,$page=-1,$orderby='',$schema = -1){
         //parse the input query string
         if($page != -1){
             $offset = ($page -1) * 15;
@@ -319,6 +319,16 @@ class Item extends db{
             
         }
 
+         //Schema is selected 
+         if($schema != -1){
+            if(strpos($whereClause,"WHERE ") !== false or (strpos($conditions,"WHERE ")) ) {
+                $conditions .= " and item.schema_version = \"$schema\"";
+            }else{
+                $conditions .= " WHERE and item.schema_version = \"$schema\"";
+            }
+            
+        }
+
         //orderby
         if($orderby != ''){
             if($orderby == 'create_date' or $orderby == 'last_modified'){
@@ -333,7 +343,7 @@ class Item extends db{
 
         $sql = "SELECT DISTINCT item.id AS id,item.title AS title,item.cataloguer_id as cataloguer_id,item.collection_id as collection_id,item.schema_version as schema_version, CAST(item.metadata as CHAR) as metadata, item.locked as locked, item.create_date as create_date, item.last_modified as last_modified FROM item,collection $whereClause $conditions  $orderbystr  $limit";
 
-       // echo($sql);
+      //  echo($sql);
 
         $result =  $this->conn->query($sql);
     

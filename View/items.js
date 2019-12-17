@@ -56,6 +56,7 @@ function deletedataset(){
     var query = $("#metadaquery").val();
 
     if( confirm('All items that matching the search / filter criteria will be deleted. This operation cannot be undone and will result in dataloss.') ){
+        $("#batchDeleteStatus").html("Processing Request: Deleting Items <img class='smallLoader' src='images/loading.gif' />");
         $.ajax({
             // The URL for the request
             url: "Controller/batch-delete.php?institution="+institution+"&cataloguer="+cataloguer+"&collection="+collection+"&query="+btoa(query),
@@ -70,11 +71,12 @@ function deletedataset(){
             // status codes are passed to the function
             error: function( xhr, status, errorThrown ) {
                 console.log(errorThrown);
+                $("#batchDeleteStatus").html(errorThrown);
                 alert( "Sorry, there was a problem!" );
             },
                 
             complete: function( xhr, status){
-                
+                $("#batchDeleteStatus").html("");
             }
              
         }); //$.ajax({

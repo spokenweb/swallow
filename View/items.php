@@ -229,7 +229,9 @@ function fillCollection($institution,$objCollection,$collection){
     <div class="col-sm-11 border-box" style="text-align:center; padding:10px; background-color:#ccc">
 
         <b>Batch delete all this items  </b>
-        <button type='button' class='btn btn-primary' onclick="deletedataset()" style="margin-left: 20px">Delete</button>
+        <button type='button' class='btn btn-primary' onclick="deletedataset()" style="margin-left: 20px">Delete
+        </button>
+        <div id="batchDeleteStatus"></div>
 
     </div>
 

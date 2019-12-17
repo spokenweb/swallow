@@ -6,7 +6,7 @@
     {
         "name": "Institution_and_Collection",
         "type":"single",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#partner-institution-fields",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#partner-institution-fields",
         "fields":[
 
             {
@@ -23,7 +23,7 @@
     {
         "name": "Item_Description",
         "type":"single",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#title",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#title",
         "fields":[
             {
                 "name": "title",
@@ -44,21 +44,21 @@
                 "name": "language",
                 "type":"dropdown|vocabulary",
                 "source":"Vocabulary/Language.json",
-                "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#language"
+                "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#language"
             },
 
             {
                 "name": "production context",
                 "type":"dropdown|vocabulary",
                 "source":"Vocabulary/ProductionContext.json",
-                "help:":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#production-context"
+                "help:":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#production-context"
             },
 
             {
                 "name": "genre",
                 "type":"dropdown|vocabulary",
                 "source":"Vocabulary/Genre.json",
-                "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#genre",
+                "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#genre",
                 "multiple":"yes"
             }
 
@@ -68,7 +68,7 @@
     {
         "name": "Rights",
         "type":"single",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#rights-fields",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#rights-fields",
         "fields":[
             {
                 "name": "rights",
@@ -87,7 +87,7 @@
     {
         "name": "Creators",
         "type":"multiple",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#statement-of-responsibility",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#statement-of-responsibility",
         "fields":[
             {
                 "name": "name",
@@ -129,7 +129,7 @@
     {
         "name": "Contributors",
         "type":"multiple",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#statement-of-responsibility",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#statement-of-responsibility",
         "fields":[
             {
                 "name": "name",
@@ -172,7 +172,7 @@
     {
         "name":"Material_Description",
         "type":"multiple",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#preliminary-material-description-fields",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#preliminary-material-description-fields",
         "fields":[
             {
                 "name":"image",
@@ -209,6 +209,11 @@
                 "name":"extent",
                 "type":"dropdown|vocabulary",
                 "source":"Vocabulary/Extent.json"
+            },
+
+            {
+                "name":"side",
+                "type":"shorttext"
             },
             {
                 "name":"playing speed",
@@ -275,7 +280,7 @@
     {
         "name": "Digital_File_Description",
         "type":"multiple",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#digital-items-fields",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#digital-items-fields",
         "fields":[
             {
                 "name": "filename",
@@ -323,7 +328,7 @@
     {
         "name": "Dates",
         "type":"multiple",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#date",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#date",
         "fields":[
             {
                 "name": "date",
@@ -354,7 +359,7 @@
     {
         "name": "Location",
         "type":"multiple",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#location",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#location",
         "fields":[
             {
                 "name": "address",
@@ -393,7 +398,7 @@
     {
         "name": "Content",
         "type":"single",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#contents",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#contents",
         "fields":[
             {
                 "name": "contents",
@@ -426,7 +431,7 @@
     {
         "name": "Related_Works",
         "type":"multiple",
-        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/latest/5-metadata-fields.html#related-works",
+        "help":"https://spokenweb-metadata-scheme.readthedocs.io/en/v3/5-metadata-fields.html#related-works",
         "fields":[
             {
                 "name": "citation",

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	$("#applicationForm").submit(function(e){
-	
+		$("#batchImportStatus").html("Processing Request: Importing Items <img class='smallLoader' src='images/loading.gif' />");
 		$.ajax({
 			// The URL for the request
 			url: "Controller/import.php",
@@ -30,11 +30,12 @@ $(document).ready(function(){
 			// Code to run if the request fails; the raw request and
 			// status codes are passed to the function
 			error: function( xhr, status, errorThrown ) {
-            	alert( "Sorry, there was a problem!" );
+				alert( "Sorry, there was a problem!" );
+				$("#batchImportStatus").html(errorThrown);
 			},
 				
 			complete: function( xhr, status){
-				
+				$("#batchImportStatus").html("");
 			}
 			 
 		}); //$.ajax({

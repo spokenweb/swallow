@@ -50,6 +50,9 @@
         },
         {
             "label":"Elder"
+        },
+        {
+            "label":"Donor"
         }
      ]
 }

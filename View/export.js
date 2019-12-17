@@ -4,8 +4,9 @@ function query(page){
     var institution = $("#f_institution").val();
     var cataloguer = $("#f_cataloguer").val();
     var collection = $("#f_collection").val();
+    var schema = $("#f_schema").val();
 
-    $("#main").load("View/export.php?metadataquery="+btoa(unescape(encodeURIComponent(query)))+"&institution="+encodeURI(institution)+"&cataloguer="+cataloguer+"&collection="+collection)+"&page="+page;
+    $("#main").load("View/export.php?metadataquery="+btoa(unescape(encodeURIComponent(query)))+"&institution="+encodeURI(institution)+"&cataloguer="+cataloguer+"&collection="+collection)+"&schema="+schema+"&page="+page;
 }
 
 
@@ -13,9 +14,11 @@ function filter(page){
     var institution = $("#f_institution").val();
     var cataloguer = $("#f_cataloguer").val();
     var collection = $("#f_collection").val();
+    var schema = $("#f_schema").val();
     var query = $("#metadaquery").val();
 
-    $("#main").load("View/export.php?metadataquery="+btoa(unescape(encodeURIComponent(query)))+"&institution="+encodeURI(institution)+"&cataloguer="+cataloguer+"&collection="+collection+"&page="+page);
+
+    $("#main").load("View/export.php?metadataquery="+btoa(unescape(encodeURIComponent(query)))+"&institution="+encodeURI(institution)+"&cataloguer="+cataloguer+"&collection="+collection+"&schema="+schema+"&page="+page);
 
     //$("#main").load("View/export.php?institution="+encodeURI(institution)+"&cataloguer="+cataloguer+"&collection="+collection+"&page="+page);
 }
@@ -25,12 +28,13 @@ function exportdataset(){
     var institution = $("#f_institution").val();
     var cataloguer = $("#f_cataloguer").val();
     var collection = $("#f_collection").val(); 
+    var schema = $("#f_schema").val();
     var query = $("#metadaquery").val();
     if (query != ''){
         query = btoa(query);
     }
 
-    url = "Controller/export.php?institution="+encodeURI(institution)+"&cataloguer="+cataloguer+"&collection="+collection+"&query="+query+"&format="+format;
+    url = "Controller/export.php?institution="+encodeURI(institution)+"&cataloguer="+cataloguer+"&collection="+collection+"&schema="+schema+"&query="+query+"&format="+format;
 
     window.open(url);
 }

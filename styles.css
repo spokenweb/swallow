@@ -542,6 +542,11 @@
         background-color:#f0f0f0;
       }
 
+      .smallLoader {
+        width:30px;
+        float:right;
+      }
+
 
 
       

@@ -1,4 +1,5 @@
 <?php 
+include_once "workflow.php";
 
 class Map{
 
@@ -20,28 +21,6 @@ class Map{
         
     }
       
-    function apply($in_source_key){
-        $result = false;
-        $result['target_field'] = "";
-        foreach($this->fieldmap as $pair ){
-            if($pair['source_field'] == $in_source_key){
-                $result['target_field'] = $pair['target_field'];
-                if(array_key_exists("type",$pair)){
-                    $result["type"] = $pair['type'];
-                    if(array_key_exists("id",$pair)){
-                        $result["id"] = $pair['id'];
-                    }
-                }else{
-                    $result["type"] = "single";
-                }
-                if(array_key_exists("source",$pair)){
-                    $result["source"] = $pair['source'];
-                }
-            
-            }
-        }
-        return $result;
-    }
 
     function validateControlledVocabulary($path,$value){
         $contents = file_get_contents($path); 
@@ -57,338 +36,365 @@ class Map{
         return $found;
     }
 
-    function maprecord($source_record){
+
+    /* ------------------------------------------------------------------------------------------------------------------- 
+    -------------------------------------------------   CSV IMPORT   -----------------------------------------------------
+    The general idea is to create a full record based on the target schema and include values 
+    when they exist. To do this the function will parse the target schema workflow to create each section and field values
+    -------------------------------------------------------------------------------------------------------------------- */
+    
+    function getSourceValueCSV($target_schema_key,$source_record,$id = 0){
+        $result = '';
+        foreach($this->fieldmap as $pair ){ 
         
-        $cataloguer = [];
-        $collection = [];
-        $metadata = [];
-        $title = "Undefined Title";
-        $error = "";
-
-        foreach($source_record as $key => $value){
-
-            $mappedField = $this->apply($key);
-            
-
-            if($mappedField != false){
-                if($value != ""){
-                    if(strpos($mappedField['target_field'],'Cataloguer.') !== false){
-                        $tokens = explode('.',$mappedField['target_field']);
-                        $cataloguer[$tokens[1]] = $value;
-                    }elseif(strpos($mappedField['target_field'],'Collection.') !== false){
-                        $tokens = explode('.',$mappedField['target_field']);
-                        $collection[$tokens[1]] = $value;
+            if(str_ireplace(' ','_',$pair['target_field']) == str_ireplace(' ','_',$target_schema_key)){
+                
+                $key= $pair['source_field'];
+                if(key_exists($key,$source_record)){
+                    if($id == 0){
+                        $result = $source_record[$key];
                     }else{
-                        if($mappedField['target_field'] != ""){                     
-                            $tokens = explode('/',$mappedField['target_field']);
-                            $encodedField = str_ireplace(" ","_",$tokens[1]);
-                            if($mappedField["type"] == "single"){
-                                if($encodedField == 'Title' or $encodedField == 'title'){
-                                    $title = $value;
-                                }
-                                $addResult = $this->addToSingle($metadata,$mappedField,$value); 
-                               
-                            }else{
-                              
-                                $addResult = $this->addToMultiple($metadata,$tokens[0],$encodedField,$mappedField,$value);
-                                
-                            }   
-
-                            if($addResult !== false){
-                                $metadata = $addResult;
-                            }else{
-                                $error .= "Value $value not valid for field ".$encodedField.". ";
-                            }
-                        }// if($mappedField['target_field'] != ""){        
-                    }
-                }// if($value != ""){  
-            } // if($mappedField != false){
-        }
-
-        $result = array($cataloguer,$collection,$title,$metadata,$error);
-        return $result;
-      
-    }
-
-
-    function checkCataloguer($mappedField,$value){
-        $cataloguer = [];   
-        if(strpos($mappedField['target_field'],'Cataloguer.') !== false){
-            $tokens = explode('.',$mappedField['target_field']);
-            $cataloguer[$tokens[1]] = $value;
-        }
-        return $cataloguer;
-    }
-
-
-    function checkCollection($mappedField,$value){
-        $collection = [];
-        if(strpos($mappedField['target_field'],'Collection.') !== false){
-            $tokens = explode('.',$mappedField['target_field']);
-            $collection[$tokens[1]] = $value;
-        }
-        return $collection;
-    }
-
-    function checkTitle($mappedField,$value){
-
-        $title = "";
-        $tokens = explode('/',$mappedField['target_field']);
-    
-        if(count($tokens) > 1){
-    
-            if($tokens[1] == 'Title' or $tokens[1] == 'title'){
-                $title = $value;
-            }
-        }
-        return $title;
-    }
-
-    function addToSingle($metadata,$mappedField,$value){
-
-        if($mappedField['target_field'] != ""){                     
-            $tokens = explode('/',$mappedField['target_field']);
-            $encodedField = str_ireplace(" ","_",$tokens[1]);
-            if($mappedField["type"] == "single"){
-                if($encodedField == 'Title' or $encodedField == 'title'){
-                    $title = $value;
-                }
-               // var_dump($mappedField);
-                if(key_exists('source',$mappedField)){
-                    if(!is_array($value)){
-                        if($this->validateControlledVocabulary("../Workflow/".$this->target_schema."/".$mappedField['source'],$value)){
-                            $metadata[$tokens[0]][$encodedField] = $value;
-                        }else{
-                            return false;
+                        if(key_exists('id',$pair) and $pair['id'] == $id){
+                            $result = $source_record[$key];   
                         }
-                    }else{
-                        $metadata[$tokens[0]][$encodedField] = $value;
                     }
-                    
-                }else{
-                    $metadata[$tokens[0]][$encodedField] = $value;
                 }
-                
             }
         }
-
-        return $metadata;
+        return $result;
     }
 
-    //$addResult = $this->addToMultiple( $metadata, $mappedTokens[0], $mappedTokens[1], $id, $multiple_value );
-    function addToMultiple($metadata,$step,$field,$mappedField,$value){
-   
-        $id = $mappedField['id'];
-        //check if is valid value
-        $valid = true;
-
-        if(key_exists('source',$mappedField)){
-            $valid = $this->validateControlledVocabulary("../Workflow/".$this->target_schema."/".$mappedField['source'],$value);
-        }
-
-        if($valid){
-            if(array_key_exists($step,$metadata)){
-                
-                $cont = 0;
-                $found = false;
-                foreach ( $metadata[$step] as $elem){
-                    if($elem['id'] == $id){ // if the element already exists add the new value
-                        $elem[$field] = $value;
-                        $found = true;
-                    }
-                    $metadata[$step][$cont] = $elem;
-                    $cont++;
-                }
-
-                if(!$found){
-                    $metadata[$step][$cont] = array();
-                    $metadata[$step][$cont]['id'] = $id;
-                    $metadata[$step][$cont][$field] = $value;
-                }
-
-            }else{
-                $metadata[$step] = array();
-                $metadata[$step][0]['id'] = $id;
-                $metadata[$step][0][$field] = $value;
-            }
-
-            return $metadata;
-
-        }else{
-            return false;
-        }
-    }
-
-
-
-    //$addResult = $this->addToMultiple( $metadata, $mappedTokens[0], $mappedTokens[1], $id, $multiple_value );
-    function addToMultiple2($metadata,$step,$mappedfield,$id,$value){
-   
-        //$id = $mappedField['id'];
-        //check if is valid value
-        $valid = true;
-
-      /*  if(key_exists('source',$mappedField)){
-            $valid = $this->validateControlledVocabulary("../Workflow/".$this->target_schema."/".$mappedField['source'],$value);
-        }
-    */
-        if($valid){
-            if(array_key_exists($step,$metadata)){
-                
-                $cont = 0;
-                $found = false;
-                foreach ( $metadata[$step] as $elem){
-                    if($elem['id'] == $id){ // if the element already exists add the new value
-                        $elem[$mappedfield] = $value;
-                        $found = true;
-                    }
-                    $metadata[$step][$cont] = $elem;
-                    $cont++;
-                }
-
-                if(!$found){
-                    $metadata[$step][$cont] = array();
-                    $metadata[$step][$cont]['id'] = $id;
-                    $metadata[$step][$cont][$mappedfield] = $value;
-                }
-
-            }else{
-                $metadata[$step] = array();
-                $metadata[$step][0]['id'] = $id;
-                $metadata[$step][0][$mappedfield] = $value;
-            }
-
-            return $metadata;
-
-        }else{
-            return false;
-        }
-    }
-    
-   function isSingleStep($value){
-       if(!is_array($value)){ // for sure is single value
-           return true;
-       }else{
-            if(key_exists("id",$value)  ){ //is a multiple field
-                return false;
-           }else{  
-                return true;
-           }
-       }
-   }
-
-    function mapJSONrecord($source_record){
+    function getSourceValueJSON($target_schema_key,$source_record,$id = 0){
+        $result = '';
         
-        $cataloguer = [];
-        $collection = [];
-        $metadata = [];
-        $title = "";
-        $error = "";
-        foreach($source_record as $step => $value){
-
-            $metadataValue = true;
-
-            if(!is_array($value)){
-                // is a string                
-                $fullkey = $step;  
-                $mappedField = $this->apply($fullkey );
-                
+        foreach($this->fieldmap as $pair ){ 
+        
+            if(str_ireplace(' ','_',$pair['target_field']) == str_ireplace(' ','_',$target_schema_key)){       
               
-                if($cataloguer == []){
-                    $cataloguer = $this->checkCataloguer($mappedField,$value);
-                    $metadataValue = false;
-                }
+                $path= $pair['source_field'];
+                $parts = explode('/',$path);
+                $total = count($parts);
 
-                if($collection == []){
-                    $collection = $this->checkCollection($mappedField,$value);
-                    $metadataValue = false;
-                }
-
-                if($title == ""){
-                    $title = $this->checkTitle($mappedField,$value);
-                }
-                
-                if($metadataValue){
-                    
-                    $addResult = $this->addToSingle($metadata,$mappedField,$value);
-
-                    if($addResult !== false){
-                        $metadata = $addResult;
-                    }else{
-                        $error .= "Value $value not valid for field ".$encodedField.". ";
-                    }
-                }
-
-            }else{    
-
-                foreach($value as $step_key => $step_value){
-
-                    $metadataValue = true;
-                    
-                    if($this->isSingleStep($step_value)){ // need to check if is a multiple value
-                        //is a single step
-                        $fullkey = $step."/".$step_key;
-                        $mappedField = $this->apply($fullkey);
-
-                        if($mappedField['target_field'] != ""){
-                            if($cataloguer == []){
-                                $cataloguer = $this->checkCataloguer($mappedField,$step_value);
-                                $metadataValue = false;
-                            }
-
-                            if($collection == []){
-                                $collection = $this->checkCollection($mappedField,$step_value);
-                                $metadataValue = false;
-                            }
-
-                            if($title == ""){
-                                $title = $this->checkTitle($mappedField,$step_value);
-                            }
-
-                            if($metadataValue){
-                               
-                                $addResult = $this->addToSingle($metadata,$mappedField,$step_value);
-
-                                if($addResult !== false){
-                                    $metadata = $addResult;
-                                }else{
-                                    $error .= "Value $step_value not valid for field ".$mappedField['target_field'].". ";
-                                }
-                            }
+                if($total == 2){
+                    if(key_exists($parts[0],$source_record)){
+                        $step = $source_record[$parts[0]];
+                        if( isset($step[0]) ){ // multiple steps have a nested structure 
+                            $step = $step[0];
                         }
-                                
-                    }else{
-                        //is a multiple step
-                        // create an id
-                        $id = uniqid('',TRUE);
-                        foreach($step_value as $multiple_key=>$multiple_value){
-
-                            $fullkey = $step."/".$multiple_key;
-                            $mappedField = $this->apply($fullkey);
-                            
-                            if(strpos($fullkey,"id") === false and $mappedField['target_field'] != "" ){
-                                $mappedTokens = explode("/",$mappedField['target_field']);                                
-                                $addResult = $this->addToMultiple2( $metadata, $mappedTokens[0], $mappedTokens[1], $id, $multiple_value );
-
-                                if($addResult !== false){
-                                    $metadata = $addResult;
-                                }else{
-                                    $error .= "Value $value not valid for field ".$encodedField.". ";
-                                }
+                        
+                        if(is_array($step) and key_exists($parts[1],$step)){
+                            if(is_array($step[$parts[1]])){ // is a multiple field
+                                $result = $step[$parts[1]][0]['value'];
+                            }else{
+                                $result = $step[$parts[1]];
                             }
-                        } // foreach($step_value as $multiple_key=>$multiple_value){
-                    } // else{              
-                } // foreach($value as $step_key => $step_value){
-            }    
+                            
+                        }
+                    } 
+                }//if($total == 2){
+            }// if(str_ireplace(' ','_',$pair['target_field']) == str_ireplace(' ','_',$target_schema_key)){  
         }
-
-        $result = array($cataloguer,$collection,$title,$metadata,$error);
-         
         return $result;
-       
+    }
+
+    function getSourceStepJSON($target_schema_stepname,$source_record){
+        $result = [];
+        foreach($this->fieldmap as $pair ){ 
+            $map_target_stepname = explode('/',str_ireplace(' ','_',$pair['target_field']))[0];
+            if($target_schema_stepname == str_ireplace(' ','/',$map_target_stepname) ){
+                $source_stepname = explode('/', $pair['source_field']);
+                if(key_exists($source_stepname[0], $source_record )){
+                    $result[$source_stepname[0]] = $source_record[$source_stepname[0]];
+                }
+            }
+        }
+        return $result;
+    }
+
+    function getSourceStepCSV($target_schema_stepname,$source_record){
+        // should return an array of all stepname columns if is a multiple step on the source file 
+        $result = [];
+        foreach($this->fieldmap as $pair ){ 
+            $map_target_stepname = explode('/',str_ireplace(' ','_',$pair['target_field']))[0];
+            if($target_schema_stepname == str_ireplace(' ','/',$map_target_stepname) ){ // found the correct target step
+                $source_step_name_parts = explode('#',$pair['source_field']);
+                //the multiple source fields follow the rule stepnane# id_fieldName. Normal field names wont have the #id 
+                
+                if(count($source_step_name_parts) > 1 ){ //is a multiple step with multiple instances
+                    $id = explode('_',$source_step_name_parts[1])[0];
+                    if(!in_array($source_step_name_parts[0].'#'.$id,$result)){
+                        $result[] = $source_step_name_parts[0].'#'.$id;
+                    }
+                }else{ // is single step
+                   // $result[] = $source_step_name_parts[0];
+                }
+
+            }
+            
+        }
+        return $result;
+
     }
 
 
+    function getSourceValue($target_schema_key,$source_record,$format,$id = 0){
+        switch ($format) {
+            case 'CSV':
+                $result = $this->getSourceValueCSV($target_schema_key,$source_record,$id);
+                return ($result);
+                break;
+            
+            case 'JSON':
+                $result = $this->getSourceValueJSON($target_schema_key,$source_record,$id);
+                return ($result);
+                break;
+            
+            default:
+                return false;
+                break;
+        }
+    }
+
+    function maprecord($source_record,$format){
+        $metadata = [];
+        $cataloguer = [];
+        $collection = [];
+        $objTargetSchema = new Workflow();
+        $objTargetSchema->loadFromVersion($this->target_schema);
+
+        $error = '';
+
+        // GET the cataloger information
+        $val = $this->getSourceValue('Cataloguer.email',$source_record,$format ); 
+        if($val== ''){
+            $error .= 'Cataloguer not defined. ';
+        }else{
+            $cataloguer = ["email"=>$val];
+        }
+
+        // get the source collection information
+        $val = $this->getSourceValue('Collection.source_collection',$source_record,$format ); 
+        if($val == ''){
+            $error .= 'Source Collection not defined. ';
+        }else{
+            $collection = ["source_collection"=>$val];
+        }  
+        
+        // get the title (this is because the title is stored twice: on the tabular part of te record for fast access and on the metadata-json part al well)
+        $title = $this->getSourceValue('Item_Description/title',$source_record,$format ); 
+        if($title == ''){
+            $error .= 'Item Contains no title. '; 
+        }
+
+        foreach($objTargetSchema->steps as $step){ //traverse the target schema and try to fill the schema with the available information
+            
+            $name = $step->name;
+            $type = $step->type;
+            $fields = $objTargetSchema->getFields($name);
+            $metadata[$name] = [];
+            if($type == 'single'){
+                foreach($fields as $field){
+                    //look if there's a value for the field on the source record
+                    $value = $this->getSourceValue($name.'/'.$field->name,$source_record,$format );     
+                    // check is the value is valid
+                    $valid = true;
+                    if(isset($field->source) and $value != "" and $field->type == "dropdown|vocabulary" and !$this->validateControlledVocabulary("../Workflow/".$this->target_schema."/".$field->source,$value)){
+                      $valid = false;
+                      $error .= " Field ".$field->name." has an invalid value ".$value;
+                    }
+                    
+                    if($value != '' and $valid){
+                        if(isset($field->multiple) and $field->multiple == "yes"){
+                            $id = uniqid('',TRUE);
+                            $element = ["id"=>$id,"value"=>$value];
+                            $metadata[$name][str_ireplace(" ","_",$field->name)][] = $element;
+                        }else{
+                            $metadata[$name][str_ireplace(" ","_",$field->name)] =  $value;
+                        
+                        }
+                    }
+                }
+            }else{ //is a multiple step
+                
+                $source_steps = $this->getSourceStepCSV($name,$source_record);
+                $id = 1;
+                $finished = false;
+                if(count($source_steps) > 0){ // the source file has multiple values 
+                    for($i = 0; $i < count($source_steps); $i++){   
+
+                        while(!$finished){
+                            $finished = true;
+                            $element = [];
+                            
+                            foreach($fields as $field){
+                                $element['id'] = $id;
+                                $value = $this->getSourceValue($name.'/'.$field->name,$source_record,$format,$id);
+                                $valid = true;
+                                if(isset($field->source) and $value != "" and $field->type == "dropdown|vocabulary" and !$this->validateControlledVocabulary("../Workflow/".$this->target_schema."/".$field->source,$value)){
+                                    $valid = false;
+                                    $error .= " Field ".$field->name." has an invalid value ".$value;
+                                  }
+
+                                if($value != ''  and $valid){
+                                    if(isset($field->multiple) and $field->multiple == "yes"){
+                                        $id2 = uniqid('',TRUE);
+                                        $element[str_ireplace(" ","_",$field->name)][] = ["id"=>$id2,"value"=>$value];
+                                    }else{
+                                        $element[str_ireplace(" ","_",$field->name)] = $value;
+                                    }
+                                    $finished = false;
+                                }
+                            }
+                            
+                            if(!$finished){
+                                $metadata[$name][]=$element;
+                                $id++; 
+                            }
+                        }
+                          
+                    }
+
+                }else{ // the source file has only one value
+                   
+                    while(!$finished){
+                        $finished = true;
+                        $element = [];
+                        foreach($fields as $field){
+                            $element['id'] = $id;
+                            $value = $this->getSourceValue($name.'/'.$field->name,$source_record,$format,$id);
+                            $valid = true;
+                            if(isset($field->source) and $value != "" and $field->type == "dropdown|vocabulary"  and !$this->validateControlledVocabulary("../Workflow/".$this->target_schema."/".$field->source,$value)){
+                                $valid = false;
+                                $error .= " Field ".$field->name." has an invalid value ".$value.". ";
+                              }
+
+                            if($value != ''  and $valid){
+                                if(isset($field->multiple) and $field->multiple == "yes"){
+                                    $id2 = uniqid('',TRUE);
+                                    $element[str_ireplace(" ","_",$field->name)][] = ["id"=>$id2,"value"=>$value];
+                                }else{
+                                    $element[str_ireplace(" ","_",$field->name)] = $value;
+                                }
+                                $finished = false;
+                            }
+                        }
+                        if(!$finished){
+                            $metadata[$name][]=$element;
+                            $id++;
+                        }
+                    } 
+                }
+            
+            }
+        }
+
+        $result = array($cataloguer,$collection,$title,$metadata,$error);
+        return $result;
+    
+    } //function maprecord($source_record){
+
+
+    function maprecordJSON($source_record,$format){
+        $metadata = [];
+        $cataloguer = [];
+        $collection = [];
+        $objTargetSchema = new Workflow();
+        $objTargetSchema->loadFromVersion($this->target_schema);
+    
+        $error = '';
+    
+        // GET the cataloger information
+        $val = $this->getSourceValue('Cataloguer.email',$source_record,$format ); 
+        if($val== ''){
+            $error .= 'Cataloguer not defined. ';
+        }else{
+            $cataloguer = ["email"=>$val];
+        }
+    
+        // get the source collection information
+        $val = $this->getSourceValue('Collection.source_collection',$source_record,$format ); 
+        if($val == ''){
+            $error .= 'Source Collection not defined. ';
+        }else{
+            $collection = ["source_collection"=>$val];
+        }  
+            
+        // get the title (this is because the title is stored twice: on the tabular part of te record for fast access and on the metadata-json part al well)
+        $title = $this->getSourceValue('Item_Description/title',$source_record,$format ); 
+        if($title == ''){
+            $error .= 'Item Contains no title. '; 
+        }
+    
+        foreach($objTargetSchema->steps as $step){ //traverse the target schema and try to fill the schema with the available information
+                
+            $name = $step->name;
+            $type = $step->type;
+            $fields = $objTargetSchema->getFields($name);
+            $metadata[$name] = [];
+            if($type == 'single'){
+                foreach($fields as $field){
+                    //look if there's a value for the field on the source record                   
+                    $value = $this->getSourceValue($name.'/'.$field->name,$source_record,$format );                   
+                    if($value != ''){
+                        if(isset($field->multiple) and $field->multiple == "yes"){
+                            $id = uniqid('',TRUE);
+                            $element = ["id"=>$id,"value"=>$value];
+                            $metadata[$name][str_ireplace(" ","_",$field->name)][] = $element;
+                        }else{
+                            $metadata[$name][str_ireplace(" ","_",$field->name)] =  $value;
+                          
+                        }
+                    }
+                }
+            }else{ //is a multiple step
+                $id = 1; // by convention ids on multiple steps always start with 1
+                //let's see if the step is also multiple on the source schema
+                $step_elements = $this->getSourceStepJSON($name,$source_record,$format,$id);  
+                $source_step_name = key($step_elements);
+                if(count($step_elements) > 0 ){
+                    //the source step is not multiple => make it multiple
+                    $keys = array_keys($step_elements[$source_step_name]);
+                    if(!is_array($step_elements[$source_step_name][$keys[0]])){
+                        $step_elements_normalized = [];
+                        $step_elements_normalized[] = $step_elements[$source_step_name];
+                    }else{
+                        $step_elements_normalized = $step_elements[$source_step_name];
+                    }
+
+                    foreach($step_elements_normalized as $step_element){
+                        $element = [];
+                        $fields = $objTargetSchema->getFields($name);
+    
+                        foreach($fields as $field){
+                            $element['id'] = $id;
+                            
+                            $subrecord = []; // we need to reintroduce step name because getSourceValue needs it
+                            $subrecord[$source_step_name] = $step_element;
+                            $value = $this->getSourceValue($name.'/'.$field->name,$subrecord ,$format,$id);                          
+                            if($value != ''){
+                                if(isset($field->multiple) and $field->multiple == "yes"){
+                                    $field_id = uniqid('',TRUE);
+                                    $element[str_ireplace(" ","_",$field->name)][] = ["id"=>$field_id,"value"=>$value];
+                                }else{
+                                    $element[str_ireplace(" ","_",$field->name)] = $value;
+                                }
+                                $finished = false;
+                            }
+                        }                       
+                        
+                        $metadata[$name][]=$element;
+                        $id++;   
+
+                    }
+                }
+            }
+        }
+        
+       
+        $result = array($cataloguer,$collection,$title,$metadata,$error);
+        return $result;
+        
+    } //function maprecord($source_record){
 
 
 }

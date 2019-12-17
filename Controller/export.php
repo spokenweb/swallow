@@ -77,10 +77,11 @@ $metadataquery = base64_decode($_GET['query']);
 $institution = $_GET['institution'];
 $cataloguer = $_GET['cataloguer'];
 $collection = $_GET['collection'];
+$schema = $_GET['schema'];
 $format = $_GET['format'];
 
 $objItem = new Item($conn);
-$objItem->metadataQuery($metadataquery,$institution ,$cataloguer,$collection);
+$objItem->metadataQuery($metadataquery,$institution ,$cataloguer,$collection,-1,'',$schema);
 
 $objCataloguer = new Cataloguer($conn);
 $objCollection = new Collection($conn);
@@ -93,7 +94,7 @@ for($i = 0; $i < $objItem->total;$i++){
 
     $record["schema"] = "Swallow JSON";
     $record["schema_version"] = $objItem->schema_version;
-    $record["swalllow_id"] = $objItem->id;
+    $record["swallow_id"] = $objItem->id;
 
     
     $objCataloguer->select($objItem->cataloguer_id);

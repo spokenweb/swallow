@@ -51,7 +51,7 @@ if(isset($_GET['id'])){
             ");
     
     foreach ($objWorkflow->steps as $step){
-        if($step->name == "Institution and Collection"){
+        if(str_ireplace(' ','_',$step->name) == "Institution_and_Collection"){
             echo("
             <h3> Institution and Collection </h3>
             <p> <b>Contributing Unit:</b> $objCollection->contributing_unit </p>
@@ -61,10 +61,17 @@ if(isset($_GET['id'])){
             ");
             if($objItem->getValue('Institution and Collection','persistent URL') != NULL){
                 echo("<p> <b>Persistent URL:</b>: ".$objItem->getValue('Institution and Collection','persistent URL') ."</p>");
+            }elseif($objItem->getValue('Institution_and_Collection','persistent_URL') != NULL){
+                echo("<p> <b>Persistent URL:</b>: ".$objItem->getValue('Institution_and_Collection','persistent_URL') ."</p>");
             }
             if($objItem->getValue('Institution and Collection','item ID') != NULL){
                 echo("<p> <b>Item ID:</b>: ".$objItem->getValue('Institution and Collection','item ID') ."</p>");
+            }elseif($objItem->getValue('Institution_and_Collection','item_ID') != NULL){
+                echo("<p> <b>Item ID:</b>: ".$objItem->getValue('Institution_and_Collection','item_ID') ."</p>");
             }
+
+            
+
             
         }else{
             echo("<h3> $step->name </h3>");
@@ -78,22 +85,27 @@ if(isset($_GET['id'])){
                         //check if is multiple
                         if(key_exists('multiple',$field)){
                             // Deal with multiple fields here
+                            echo("<p> <b>$field->name:</b>");
+                            if(is_array($value)){
+                                foreach($value as $elem){
+                                    echo($elem['value'].", ");
+                                }
+                            }
+                            echo("</p>");
                         }else{
                             echo("<p> <b>$field->name:</b>");
                             //check if is an image
-                            if(strpos($value,".jpg") != false or strpos($value,".png")){
+                            if(strpos($value,".jpg") != false or strpos($value,".png") != false){
                                 echo("<img src='".$value."' width = 200px>");
                             }elseif(strlen($value) > 64){
                                 echo("<textarea class='longtext'>".$value."</textarea>");
                             }else{
                                 echo($value);
                             }
-                        }
-                       
-                        
+                        }   
                     }
                 }
-            }else{
+            }else{ // Multiple step
                     $elements = $objItem->getElement($step->name);  
                     
                     foreach($elements as $element){
@@ -111,7 +123,7 @@ if(isset($_GET['id'])){
                                 if(is_array($element[$key])){
 
                                     foreach($element[$key] as $multielement){
-                                        if(strpos($multielement["value"],".jpg") != false or strpos($multielement["value"],".png")){
+                                        if(strpos($multielement["value"],".jpg") != false or strpos($multielement["value"],".png") != false){
                                             echo("<img src='".$multielement["value"]."' width = 200px>");
                                         }elseif(strlen($multielement["value"]) > 64){
                                             echo("<textarea class='longtext' >".$multielement["value"]."</textarea>");
@@ -121,8 +133,8 @@ if(isset($_GET['id'])){
                                     }
                                 }else{
 
-                                    if(strpos($value,".jpg") != false or strpos($value,".png")){
-                                        echo("<img src='".$value."' width = 200px>");
+                                    if(strpos($element[$key],".jpg") != false or strpos($element[$key],".png") != false){
+                                        echo("<img src='".$element[$key]."' width = 200px>");
                                     }elseif(strlen($element[$key]) > 64){
                                         echo("<textarea class='longtext' >".$element[$key]."</textarea>");
                                     }else{

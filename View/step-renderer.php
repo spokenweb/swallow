@@ -154,6 +154,14 @@ function renderField($field,$value,$id='',$renderMultiple = true){
                 renderLookup($fieldname,$field->source,$value,$id);
                 break;
         }
+    }else{
+        if($isMultiple and !$renderMultiple){
+            $name = explode('-ignore',$fieldname);
+            echo("
+                <label class='col-sm-4'>".$name[0]."</label>
+                <span>To add values to this field, please add the item first </span>
+            ");
+        }
     }
        
 }
@@ -327,9 +335,11 @@ function  renderList($conn,$stepName,$itemid){
 
 
 function renderCataloguer($conn,$cataloguerid,$itemid){
-    
+    $objItem = new Item($conn);
+    $objItem->select($itemid);
+
     $objCataloguer = new Cataloguer($conn);
-    $objCataloguer->select( $cataloguerid);
+    $objCataloguer->select($objItem->cataloguer_id);
 
     echo("  
     <div class='form-group'>
@@ -345,14 +355,16 @@ function renderCataloguer($conn,$cataloguerid,$itemid){
 }
 
 function renderCollection($conn,$cataloguerid,$itemid){
+
+    $objItem = new Item($conn);
+    $objItem->select($itemid);
+
     $objCataloguer = new Cataloguer($conn);
-    $objCataloguer->select( $cataloguerid);
+    $objCataloguer->select($objItem->cataloguer_id);
 
     $objCollection = new Collection($conn);
     $objCollection->selectFromPartner($objCataloguer->institution);
 
-    $objItem = new Item($conn);
-    $objItem->select($itemid);
 
     echo("
         <div class='form-group'>    
@@ -394,15 +406,25 @@ function renderCollection($conn,$cataloguerid,$itemid){
 if(isset($_GET['name']))
 {
     $objWorkflow = new Workflow();
-    $objWorkflow->load('../Workflow/'.$GLOBALS['currentSchema'].'/workflow.json');
-    $step = $objWorkflow->getStep($_GET['name']);
+    if (!$objWorkflow->load('../Workflow/'.$GLOBALS['currentSchema'].'/workflow.json'))
+    {
+        echo('warning: error on load of workflow');
+    };
+
+    $step = $objWorkflow->getStep(str_replace(' ','_',$_GET['name']));
+    if ($step==false){echo('warning: step '.$_GET['name'].' not retrieved');}
     if(isset($step->help)){
         $help = $step->help;
     }else{
         $help = "";
     }
 
-    echo("<div class='step-subtitle'>". str_replace('_',' ',$_GET['name']) . "   <span class='glyphicon glyphicon-question-sign' style='cursor:pointer' data-toggle='modal' data-target='#helpModal' onclick='loadhelp(\"".$help." \")'></span></div>");
+    echo("<div class='step-subtitle'>");
+    echo(str_replace('_',' ',$_GET['name']));
+    if ($help!=""){  
+        echo("<span class='glyphicon glyphicon-question-sign' style='cursor:pointer' data-toggle='modal' data-target='#helpModal' onclick='loadhelp(\"".$help." \")'></span>");
+    }
+    echo("</div>");
 
     $submittext = 'Save';
     if(isset($_GET['type']) and $_GET['type'] == "multiple" ){
@@ -421,6 +443,8 @@ if(isset($_GET['name']))
             break;
         
         case "Institution_and_Collection":
+            renderCollection($conn,$_SESSION['swallow_uid'],$_GET['itemid']);
+            break;
         case "Institution and Collection":
             renderCollection($conn,$_SESSION['swallow_uid'],$_GET['itemid']);
             break;

@@ -14,6 +14,8 @@ isLogged($conn);
 Parameters: 
 $cataloguer_info,$collection_info,$metadata_info are Assoc Arrays
 $schema_version id a string
+
+This function store the record on the database
 */
 function createRecord($cataloguer_info,$collection_info,$title,$schema_version,$metadata_info,$conn,$is_preview){
     //get the cataloguer
@@ -81,6 +83,7 @@ function createAssoc($header,$row){
     return $result;
 }
 
+
 function loadCSV($csvPath,$objMap,$conn,$is_preview){
     $fp = fopen($csvPath,'r');
     $header = fgetcsv($fp);
@@ -91,7 +94,9 @@ function loadCSV($csvPath,$objMap,$conn,$is_preview){
         $row = fgetcsv($fp);
         $record = createAssoc($header,$row);
         
-        $mappedRecord = $objMap->maprecord($record);
+        $mappedRecord = $objMap->maprecord($record,'CSV');
+
+        
         if($mappedRecord[4] != ""){
             $error = "ERROR: Can't import item in line $lineNumber. Cause: ".$mappedRecord[4];
         }else{
@@ -100,9 +105,11 @@ function loadCSV($csvPath,$objMap,$conn,$is_preview){
         
         $report[] = array("message"=>$error);
         $lineNumber++;
+        
     }
 
     return $report;
+    
 }
 
 
@@ -110,20 +117,24 @@ function loadJSON($jsonPath,$objMap,$conn,$is_preview){
     $contents = file_get_contents($jsonPath);   
     $source = json_decode(utf8_encode($contents),TRUE);
     $lineNumber = 1;
+    $report = [];
 
-    foreach($source as $record){
+    if(!is_null($source)){
+        foreach($source as $record){
         
-   
-        $mappedRecord = $objMap->mapJSONrecord($record); 
-   
-        if($mappedRecord[4] != ""){
-            $error = "ERROR: Can't import item number $lineNumber. Cause: ".$mappedRecord[4];
-        }else{
-            $error = createRecord($mappedRecord[0],$mappedRecord[1],$mappedRecord[2],$objMap->target_schema,$mappedRecord[3],$conn,$is_preview);
-        }
-        
-        $report[] = array("message"=>$error);
-        $lineNumber++;
+            $mappedRecord = $objMap->maprecordJSON($record,'JSON'); 
+         
+              if($mappedRecord[4] != ""){
+                  $error = "ERROR: Can't import item number $lineNumber. Cause: ".$mappedRecord[4];
+              }else{
+                  $error = createRecord($mappedRecord[0],$mappedRecord[1],$mappedRecord[2],$objMap->target_schema,$mappedRecord[3],$conn,$is_preview);
+              }
+              
+              $report[] = array("message"=>$error);
+              $lineNumber++;
+          }
+    }else{
+        $report[] = array("message"=>"ERROR parsing JSON file: ".json_last_error_msg()); 
     }
 
     return $report;
