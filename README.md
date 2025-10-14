@@ -1,3 +1,9 @@
+# Swallow Version 1
+
+This is the code for Swallow version 1 (no longer maintained) the latest version of Swallow is at: 
+
+https://github.com/lib-development-concordiaU/swallow2
+
 # Swallow Metadata Management System
 
 This is the source code and documentation repository for the Swallow Metadata Management System.
