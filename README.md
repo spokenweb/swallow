@@ -1,4 +1,4 @@
-# Swallow Version 1
+# Swallow Version 1 and 2
 
 This is the code for Swallow version 1 (no longer maintained) the latest version of Swallow is at: 
 
